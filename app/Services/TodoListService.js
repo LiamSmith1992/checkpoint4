@@ -21,7 +21,11 @@ class TodoListService {
     console.log('this is getting', appState.todoList)
   }
 
-
+  async deleteItem(id) {
+    const res = await SandboxApi.delete('Liam/todos/' + id)
+    console.log('deleting', res.data)
+    appState.todoList = appState.todoList.filter(t => t.id != id)
+  }
 
 
 

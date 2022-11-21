@@ -9,7 +9,7 @@ import { setHTML } from "../Utils/Writer.js"
 
 
 function _drawTodoList() {
-  debugger
+
   const todo = appState.todoList
   let template = ''
   todo.forEach(t => template += t.TodoListTemplate)
@@ -49,14 +49,14 @@ export class TodoListController {
   }
 
   async getTodoList() {
-
-
     await todoListService.getTodoList()
-
-
   }
 
-
+  async deleteItem(id) {
+    // console.log('deleting', id)
+    if (await Pop.confirm('did you do it?'))
+      await todoListService.deleteItem(id)
+  }
 
 
 }
