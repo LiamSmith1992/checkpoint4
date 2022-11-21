@@ -1,5 +1,7 @@
 import { appState } from "../AppState.js"
+import { Clock } from "../Models/clock.js"
 import { sitesService } from "../Services/SitesService.js"
+import { EventEmitter } from "../Utils/EventEmitter.js"
 import { Pop } from "../Utils/Pop.js"
 import { setHTML } from "../Utils/Writer.js"
 
@@ -30,6 +32,14 @@ function _drawTemp() {
   }
 }
 
+function _drawClock() {
+  let time = appState.time
+  time = new Clock
+  setHTML('clock', time.ClockTemplate)
+  console.log(appState.time)
+
+}
+
 export class SitesController {
 
   constructor() {
@@ -37,11 +47,14 @@ export class SitesController {
     this.getBackgroundImage()
     this.getQuote()
     this.getWeather()
+    setInterval(_drawClock, 500)
+
 
     appState.on('backgroundImg', _drawPicture)
     appState.on('quote', _drawQuote)
     appState.on('temp', _drawTemp)
     appState.on('temp',)
+    _drawClock()
 
   }
 
