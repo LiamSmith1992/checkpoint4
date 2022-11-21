@@ -1,5 +1,7 @@
 import { appState } from "../AppState.js"
+import { TodoList } from "../Models/TodoList.js"
 import { todoListService } from "../Services/TodoListService.js"
+import { EventEmitter } from "../Utils/EventEmitter.js"
 import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
 import { setHTML } from "../Utils/Writer.js"
@@ -7,9 +9,12 @@ import { setHTML } from "../Utils/Writer.js"
 
 
 function _drawTodoList() {
-  let todo = appState.todoList
-  setHTML('todo-list', todo.TodoListTemplate)
-  console.log(todo)
+  debugger
+  const todo = appState.todoList
+  let template = ''
+  todo.forEach(t => template += t.TodoListTemplate)
+  setHTML('todo-list', template)
+  console.log('drawing')
 }
 
 
@@ -20,8 +25,8 @@ function _drawTodoList() {
 export class TodoListController {
 
   constructor() {
-
-    // _drawTodoList()
+    appState.on('todoList', _drawTodoList)
+    this.getTodoList()
 
 
   }
@@ -35,7 +40,7 @@ export class TodoListController {
       let todoData = getFormData(form)
       Pop.toast('New Todo', 'success')
       form.reset()
-      console.log(todoData)
+      console.log('this is not running')
       await todoListService.createNewTodo(todoData)
     } catch (error) {
       Pop.error(error.message)
@@ -43,7 +48,13 @@ export class TodoListController {
     }
   }
 
+  async getTodoList() {
 
+
+    await todoListService.getTodoList()
+
+
+  }
 
 
 

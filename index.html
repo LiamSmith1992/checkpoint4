@@ -49,15 +49,15 @@
   </main>
   <footer class=" text-light container-fluid">
 
-    <div id="todo-list" class="d-flex justify-content-end opacity-75 mb-3">
+    <div class="d-flex justify-content-end opacity-75 mb-3">
       <div class="text-center col-3 card ">
         <div class="opacity-75 text-dark border-bottom">incomplete tasks</div>
-        <div class="text-dark">
+        <div id="todo-list">
 
-          this is todo<span class="mdi mdi-trash-can-outline text-danger selectable" name="description"
-            onclick="app.todoListController.deleteItem()"></span>
+          <!-- NOTE this is the todo list text  -->
+
+
         </div>
-
         <form onsubmit="app.todoListController.createNewTodo()">
           <div class="form me-3 ms-3 ">
             <input required type="text" class="form-control" id="description" placeholder="New Task" name="description"

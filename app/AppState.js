@@ -14,6 +14,7 @@ class AppState extends EventEmitter {
 
   time = new Date()
 
+  /** @type {import('./Models/TodoList.js').todoList[]} */
   todoList = []
 }
 
