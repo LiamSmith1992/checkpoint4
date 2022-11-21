@@ -14,14 +14,14 @@ export class SandboxTemp {
 
   get FahrenheitTemplate() {
     return `
-    <div class="col-md-2 col-12 text-white">
+    <div class="  text-white">
     <h5 class="selectable" onclick="app.sitesController.flipTemp()">${this.fahrenheit} F</h5>
       </div>
     `
   }
   get CelsiusTemplate() {
     return `
-    <div class="col-2 text-white">
+    <div class="text-white">
     <h5 class="selectable" onclick="app.sitesController.flipTemp()">${this.celsius} C</h5>
       </div>
     `

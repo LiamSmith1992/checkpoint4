@@ -47,7 +47,7 @@ export class SitesController {
     this.getBackgroundImage()
     this.getQuote()
     this.getWeather()
-    setInterval(_drawClock, 500)
+    // setInterval(_drawClock, 500)
 
 
     appState.on('backgroundImg', _drawPicture)
@@ -83,6 +83,9 @@ export class SitesController {
   flipTemp() {
     sitesService.flipTemp()
   }
+
+
+
 
 
 

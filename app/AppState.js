@@ -14,6 +14,7 @@ class AppState extends EventEmitter {
 
   time = new Date()
 
+  todoList = []
 }
 
 export const appState = new Proxy(new AppState(), {

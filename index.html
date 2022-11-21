@@ -17,9 +17,9 @@
 </head>
 
 <body>
-  <header class="d-flex">
-    <div class="col-12">
-      <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select">
+  <header class="d-flex container-fluid">
+    <div class="col-12 d-flex space-around opacity-75 mt-2">
+      <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select rounded">
         <a class="navbar-brand ms-3" href="#">
           <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
             loading="lazy">
@@ -29,12 +29,12 @@
           </div>
         </a>
 
+        <div id="weather" class="text-end me-3">
+          <!-- <h5>temp</h5>
+        </div> -->
+        </div>
       </nav>
 
-      <div id="weather" class="text-end">
-        <!-- <h5>temp</h5>
-      </div> -->
-      </div>
 
   </header>
   <main class="container-fluid d-flex ">
@@ -48,23 +48,27 @@
 
   </main>
   <footer class=" text-light container-fluid">
-    <div class="d-flex justify-content-end opacity-50">
+
+    <div id="todo-list" class="d-flex justify-content-end opacity-75 mb-3">
       <div class="text-center col-3 card ">
         <div class="opacity-75 text-dark border-bottom">incomplete tasks</div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-          <label class="form-check-label" for="flexCheckIndeterminate">
+        <div class="text-dark">
 
-            <span class="opacity-75 text-dark border-bottom">
-              this is notes
-              <span class="mdi mdi-trash-can-outline text-danger selectable"
-                onclick="app.sitesController.deleteItem()"></span>
-            </span>
-            <input type="text" placeholder="New Task">
-          </label>
+          this is todo<span class="mdi mdi-trash-can-outline text-danger selectable" name="description"
+            onclick="app.todoListController.deleteItem()"></span>
         </div>
-        <button class="btn btn-info mdi">submit</button>
+
+        <form onsubmit="app.todoListController.createNewTodo()">
+          <div class="form me-3 ms-3 ">
+            <input required type="text" class="form-control" id="description" placeholder="New Task" name="description"
+              value="">
+          </div>
+          <button class="btn btn-info mdi">submit</button>
+        </form>
       </div>
+
+    </div>
+
     </div>
   </footer>
 
