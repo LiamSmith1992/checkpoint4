@@ -27,9 +27,11 @@ class TodoListService {
     appState.todoList = appState.todoList.filter(t => t.id != id)
   }
 
-  completeTask() {
-    let checked = appState.todoList.completed
-    checked = !checked
+  async completeTask(id) {
+    debugger
+    let checked = appState.todoList.find(t => t.id == id)
+    checked.completed = !checked.completed
+    const res = await SandboxApi.put('Liam/todos/' + id, checked)
     console.log('completed', checked)
     appState.emit('todoList')
   }

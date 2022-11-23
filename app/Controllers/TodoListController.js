@@ -15,6 +15,8 @@ function _drawTodoList() {
   todo.forEach(t => template += t.TodoListTemplate)
   setHTML('todo-list', template)
   console.log('drawing')
+
+
 }
 
 
@@ -75,8 +77,11 @@ export class TodoListController {
   }
 
 
-  completeTask() {
-    todoListService.completeTask()
+  async completeTask(id) {
+    await todoListService.completeTask(id)
+    console.log('looking for id', id)
   }
+
+
 
 }
