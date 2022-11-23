@@ -27,8 +27,19 @@ class TodoListService {
     appState.todoList = appState.todoList.filter(t => t.id != id)
   }
 
+  completeTask() {
+    let checked = appState.todoList.completed
+    checked = !checked
+    console.log('completed', checked)
+    appState.emit('todoList')
+  }
 
 
+
+  // let temp = appState.temp
+  //     temp.isFahrenheit = !temp.isFahrenheit
+  //     console.log("After", temp)
+  //     appState.emit('temp')
 }
 
 
